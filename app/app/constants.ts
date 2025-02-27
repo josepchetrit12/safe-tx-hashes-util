@@ -146,7 +146,7 @@ export const NETWORKS = [
       gnosisPrefix: "zksync",
       logo: "networks/zksync.ico",
     },
-		{
+{
       value: "ronin",
       label: "Ronin",
       chainId: 2020,

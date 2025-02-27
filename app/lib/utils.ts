@@ -28,7 +28,7 @@ export const API_URLS: { [key: string]: string } = {
   worldchain: "https://safe-transaction-worldchain.safe.global",
   xlayer: "https://safe-transaction-xlayer.safe.global",
   zksync: "https://safe-transaction-zksync.safe.global",
-	ronin: "https://safe-transaction-ronin.safe.onchainden.com/api"
+  ronin: "https://safe-transaction-ronin.safe.onchainden.com/api"
 }
 
 export function isValidNetwork(network: string): boolean {
