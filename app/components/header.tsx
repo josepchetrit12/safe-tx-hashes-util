@@ -38,18 +38,6 @@ export function Header() {
             
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-2">
-              <Button variant="outline" size="sm" className="bg-button hover:bg-button-hover active:bg-button-active text-white rounded-full px-6 py-2" asChild>
-                <a
-                  href="https://www.openzeppelin.com/request?id=talk_to_an_expert-navbar"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  id="talk_to_an_expert-navbar"
-                  className="flex items-center gap-1"
-                >
-                  <MessageSquare className="h-4 w-4" />
-                  <span>Talk to an Expert</span>
-                </a>
-              </Button>
               <Button variant="ghost" asChild className="text-sm font-medium">
                 {isHowItWorksPage ? (
                   <Link href="/" className="flex items-center gap-2">
