@@ -38,7 +38,7 @@ export function Header() {
             
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-2">
-              <Button variant="outline" size="sm" asChild>
+              <Button variant="outline" size="sm" className="bg-button hover:bg-button-hover active:bg-button-active text-white rounded-full px-6 py-2" asChild>
                 <a
                   href="https://www.openzeppelin.com/request?id=talk_to_an_expert-navbar"
                   target="_blank"
@@ -124,10 +124,10 @@ export function Header() {
         <div className="md:hidden">
           <div className="px-4 py-3 space-y-4">
             {/* Talk to an Expert button - kept as full width */}
-            <div className="pt-3 border-t border-border/40">
+            <div className="pt-3 border-t border-border/40 flex justify-center">
               <a
                 href="https://www.openzeppelin.com/request?id=talk_to_an_expert-navbar"
-                className="flex items-center justify-center gap-2 px-3 py-2 bg-primary text-primary-foreground rounded-md text-base font-medium hover:bg-primary/90"
+                className="inline-flex items-center justify-center gap-2 px-6 py-2 bg-button hover:bg-button-hover active:bg-button-active text-white rounded-md text-base font-medium"
                 rel="noopener noreferrer"
                 id="talk_to_an_expert-navbar-mobile"
                 onClick={() => setIsMenuOpen(false)}
