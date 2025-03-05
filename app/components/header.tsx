@@ -111,19 +111,6 @@ export function Header() {
       {isMenuOpen && (
         <div className="md:hidden">
           <div className="px-4 py-3 space-y-4">
-            {/* Talk to an Expert button - kept as full width */}
-            <div className="pt-3 border-t border-border/40 flex justify-center">
-              <a
-                href="https://www.openzeppelin.com/request?id=talk_to_an_expert-navbar"
-                className="inline-flex items-center justify-center gap-2 px-6 py-2 bg-button hover:bg-button-hover active:bg-button-active text-white rounded-md text-base font-medium"
-                rel="noopener noreferrer"
-                id="talk_to_an_expert-navbar-mobile"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <MessageSquare className="h-5 w-5" />
-                <span>Talk to an Expert</span>
-              </a>
-            </div>
             {/* Navigation icons in a row */}
             <div className="flex justify-center items-center gap-8 py-2">
               {/* Docs/Home */}
