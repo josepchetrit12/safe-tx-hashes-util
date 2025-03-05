@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { UseFormReturn } from "react-hook-form";
 import { FormData } from "@/types/form-types";
 import { 
@@ -15,7 +15,7 @@ import {
   SelectValue 
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@radix-ui/react-tooltip";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@radix-ui/react-tooltip";
 import { HelpCircle } from "lucide-react";
 
 interface TransactionDetailsStepProps {
@@ -23,7 +23,14 @@ interface TransactionDetailsStepProps {
 }
 
 export default function TransactionDetailsStep({ form }: TransactionDetailsStepProps) {
+  const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
+
+  const handleTooltipToggle = (id: string) => {
+    setActiveTooltip(activeTooltip === id ? null : id);
+  };
+  
   return (
+    <TooltipProvider>
     <div className="space-y-5">
       <h3 className="text-lg font-medium">Transaction parameters</h3>
       
@@ -34,9 +41,14 @@ export default function TransactionDetailsStep({ form }: TransactionDetailsStepP
           <FormItem>
             <FormLabel className="flex items-center gap-1">
               Recipient address (To)
-              <Tooltip>
+              <Tooltip open={activeTooltip === "transaction-recipient"}>
                 <TooltipTrigger asChild>
-                  <span className="cursor-default">
+                  <span 
+                    className="cursor-pointer" 
+                    onClick={() => handleTooltipToggle("transaction-recipient")}
+                    onMouseEnter={() => setActiveTooltip("transaction-recipient")}
+                    onMouseLeave={() => setActiveTooltip(null)}
+                  >
                   <HelpCircle className="ml-1 w-4 h-4 text-muted-foreground" />
                   </span>
                 </TooltipTrigger>
@@ -59,9 +71,14 @@ export default function TransactionDetailsStep({ form }: TransactionDetailsStepP
           <FormItem>
             <FormLabel className="flex items-center gap-1">
               Value (in wei)
-              <Tooltip>
+              <Tooltip open={activeTooltip === "transaction-value"}>
                 <TooltipTrigger asChild>
-                  <span className="cursor-default">
+                  <span 
+                    className="cursor-pointer" 
+                    onClick={() => handleTooltipToggle("transaction-value")}
+                    onMouseEnter={() => setActiveTooltip("transaction-value")}
+                    onMouseLeave={() => setActiveTooltip(null)}
+                  >
                     <HelpCircle className="ml-1 w-4 h-4 text-muted-foreground" />
                   </span>
                 </TooltipTrigger>
@@ -84,9 +101,14 @@ export default function TransactionDetailsStep({ form }: TransactionDetailsStepP
           <FormItem>
             <FormLabel className="flex items-center gap-1">
               Transaction data
-              <Tooltip>
+              <Tooltip open={activeTooltip === "transaction-data"}>
                 <TooltipTrigger asChild>
-                  <span className="cursor-default">
+                  <span 
+                    className="cursor-pointer" 
+                    onClick={() => handleTooltipToggle("transaction-data")}
+                    onMouseEnter={() => setActiveTooltip("transaction-data")}
+                    onMouseLeave={() => setActiveTooltip(null)}
+                  >
                     <HelpCircle className="ml-1 w-4 h-4 text-muted-foreground" />
                   </span>
                 </TooltipTrigger>
@@ -109,9 +131,14 @@ export default function TransactionDetailsStep({ form }: TransactionDetailsStepP
           <FormItem>
             <FormLabel className="flex items-center gap-1">
               Operation
-              <Tooltip>
+              <Tooltip open={activeTooltip === "transaction-operation"}>
                 <TooltipTrigger asChild>
-                  <span className="cursor-default">
+                  <span 
+                      className="cursor-pointer" 
+                      onClick={() => handleTooltipToggle("transaction-operation")}
+                      onMouseEnter={() => setActiveTooltip("transaction-operation")}
+                      onMouseLeave={() => setActiveTooltip(null)}
+                    >
                     <HelpCircle className="ml-1 w-4 h-4 text-muted-foreground" />
                   </span>
                 </TooltipTrigger>
@@ -138,5 +165,6 @@ export default function TransactionDetailsStep({ form }: TransactionDetailsStepP
         )}
       />
     </div>
+    </TooltipProvider>
   );
 }

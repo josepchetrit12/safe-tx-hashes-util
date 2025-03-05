@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { UseFormReturn } from "react-hook-form";
 import { FormData } from "@/types/form-types";
 import { 
@@ -8,7 +8,7 @@ import {
   FormControl 
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@radix-ui/react-tooltip";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@radix-ui/react-tooltip";
 import { HelpCircle } from "lucide-react";
 
 interface AdvancedParamsStepProps {
@@ -16,12 +16,24 @@ interface AdvancedParamsStepProps {
 }
 
 export default function AdvancedParamsStep({ form }: AdvancedParamsStepProps) {
+  const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
+
+  const handleTooltipToggle = (id: string) => {
+    setActiveTooltip(activeTooltip === id ? null : id);
+  };
+  
   return (
+    <TooltipProvider>
     <div className="space-y-5">
       <h3 className="text-lg font-medium inline-flex items-center gap-1">Advanced parameters
-        <Tooltip>
+        <Tooltip open={activeTooltip === "advanced-parameters"}>
           <TooltipTrigger asChild>
-            <span className="cursor-default">
+            <span 
+              className="cursor-pointer" 
+              onClick={() => handleTooltipToggle("advanced-parameters")}
+              onMouseEnter={() => setActiveTooltip("advanced-parameters")}
+              onMouseLeave={() => setActiveTooltip(null)}
+            >
               <HelpCircle className="ml-1 w-4 h-4 text-muted-foreground" />
             </span>
           </TooltipTrigger>
@@ -96,5 +108,6 @@ export default function AdvancedParamsStep({ form }: AdvancedParamsStepProps) {
         )}
       />
     </div>
+    </TooltipProvider>
   );
 }

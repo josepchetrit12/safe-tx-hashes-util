@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { UseFormReturn } from "react-hook-form";
 import { FormData } from "@/types/form-types";
 import { NETWORKS } from "@/app/constants";
@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import PixelAvatar from "@/components/pixel-avatar";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@radix-ui/react-tooltip";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@radix-ui/react-tooltip";
 import { HelpCircle } from "lucide-react";
 
 interface BasicInfoStepProps {
@@ -25,7 +25,14 @@ interface BasicInfoStepProps {
 }
 
 export default function BasicInfoStep({ form }: BasicInfoStepProps) {
+  const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
+
+  const handleTooltipToggle = (id: string) => {
+    setActiveTooltip(activeTooltip === id ? null : id);
+  };
+  
   return (
+    <TooltipProvider>
     <div className="space-y-5">
       <h3 className="text-lg font-medium">Basic Information</h3>
       
@@ -128,13 +135,21 @@ export default function BasicInfoStep({ form }: BasicInfoStepProps) {
         render={({ field }) => (
           <FormItem>
             <FormLabel className="flex items-center gap-1">Safe Address
-              <Tooltip>
+              <Tooltip open={activeTooltip === "safe-address"}>
                 <TooltipTrigger asChild>
-                  <span className="cursor-default">
+                  <span 
+                    className="cursor-pointer" 
+                    onClick={() => handleTooltipToggle("safe-address")}
+                    onMouseEnter={() => setActiveTooltip("safe-address")}
+                    onMouseLeave={() => setActiveTooltip(null)}
+                  >
                   <HelpCircle className="ml-1 w-4 h-4 text-muted-foreground" />
                   </span>
                 </TooltipTrigger>
-                <TooltipContent className="pointer-events-none max-w-xs break-words p-2 rounded-md bg-black text-white dark:bg-white dark:text-black">
+                <TooltipContent 
+                  className="pointer-events-none max-w-xs break-words p-2 rounded-md bg-black text-white dark:bg-white dark:text-black"
+                  sideOffset={5}
+                > 
                   <p>Your multisig address.</p>
                 </TooltipContent>
               </Tooltip>
@@ -163,13 +178,21 @@ export default function BasicInfoStep({ form }: BasicInfoStepProps) {
         render={({ field }) => (
           <FormItem>
             <FormLabel className="flex items-center gap-1">Nonce
-              <Tooltip>
+              <Tooltip open={activeTooltip === "safe-nonce"}>
                 <TooltipTrigger asChild>
-                  <span className="cursor-default">
+                <span 
+                    className="cursor-pointer" 
+                    onClick={() => handleTooltipToggle("safe-nonce")}
+                    onMouseEnter={() => setActiveTooltip("safe-nonce")}
+                    onMouseLeave={() => setActiveTooltip(null)}
+                  >
                     <HelpCircle className="ml-1 w-4 h-4 text-muted-foreground" />
                   </span>
                 </TooltipTrigger>
-                <TooltipContent className="pointer-events-none max-w-xs break-words p-2 rounded-md bg-black text-white dark:bg-white dark:text-black">
+                <TooltipContent 
+                  className="pointer-events-none max-w-xs break-words p-2 rounded-md bg-black text-white dark:bg-white dark:text-black"
+                  sideOffset={5}
+                > 
                   <p>The nonce of the transaction you want to validate.</p>
                 </TooltipContent>
               </Tooltip>
@@ -208,5 +231,6 @@ export default function BasicInfoStep({ form }: BasicInfoStepProps) {
         )}
       />
     </div>
+    </TooltipProvider>
   );
 }
