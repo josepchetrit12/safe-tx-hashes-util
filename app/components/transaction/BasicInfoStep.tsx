@@ -17,6 +17,8 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import PixelAvatar from "@/components/pixel-avatar";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@radix-ui/react-tooltip";
+import { HelpCircle } from "lucide-react";
 
 interface BasicInfoStepProps {
   form: UseFormReturn<FormData>;
@@ -125,7 +127,18 @@ export default function BasicInfoStep({ form }: BasicInfoStepProps) {
         name="address"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Safe Address</FormLabel>
+            <FormLabel className="flex items-center gap-1">Safe Address
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <span className="cursor-default">
+                  <HelpCircle className="ml-1 w-4 h-4 text-muted-foreground" />
+                  </span>
+                </TooltipTrigger>
+                <TooltipContent className="pointer-events-none max-w-xs break-words p-2 rounded-md bg-black text-white dark:bg-white dark:text-black">
+                  <p>Your multisig address.</p>
+                </TooltipContent>
+              </Tooltip>
+            </FormLabel>
             <FormControl>
               <Input
                 placeholder="Enter Safe address"
@@ -149,7 +162,18 @@ export default function BasicInfoStep({ form }: BasicInfoStepProps) {
         name="nonce"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Nonce</FormLabel>
+            <FormLabel className="flex items-center gap-1">Nonce
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <span className="cursor-default">
+                    <HelpCircle className="ml-1 w-4 h-4 text-muted-foreground" />
+                  </span>
+                </TooltipTrigger>
+                <TooltipContent className="pointer-events-none max-w-xs break-words p-2 rounded-md bg-black text-white dark:bg-white dark:text-black">
+                  <p>The nonce of the transaction you want to validate.</p>
+                </TooltipContent>
+              </Tooltip>
+            </FormLabel>
             <FormControl>
               <Input placeholder="Enter nonce" {...field} />
             </FormControl>

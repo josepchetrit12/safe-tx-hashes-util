@@ -8,6 +8,8 @@ import {
   FormControl 
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@radix-ui/react-tooltip";
+import { HelpCircle } from "lucide-react";
 
 interface AdvancedParamsStepProps {
   form: UseFormReturn<FormData>;
@@ -16,7 +18,18 @@ interface AdvancedParamsStepProps {
 export default function AdvancedParamsStep({ form }: AdvancedParamsStepProps) {
   return (
     <div className="space-y-5">
-      <h3 className="text-lg font-medium">Advanced parameters</h3>
+      <h3 className="text-lg font-medium inline-flex items-center gap-1">Advanced parameters
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <span className="cursor-default">
+              <HelpCircle className="ml-1 w-4 h-4 text-muted-foreground" />
+            </span>
+          </TooltipTrigger>
+          <TooltipContent className="pointer-events-none max-w-xs break-words p-2 rounded-md bg-black text-white dark:bg-white dark:text-black">
+            <p>These are extra parameters for the multisig transaction execution. Most of the time you don't need to change these, but you can put the actual values if those are custom ones.</p>
+          </TooltipContent>
+        </Tooltip>
+      </h3>
       
       <FormField
         control={form.control}

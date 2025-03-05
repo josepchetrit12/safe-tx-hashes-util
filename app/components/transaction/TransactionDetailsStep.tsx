@@ -15,6 +15,8 @@ import {
   SelectValue 
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@radix-ui/react-tooltip";
+import { HelpCircle } from "lucide-react";
 
 interface TransactionDetailsStepProps {
   form: UseFormReturn<FormData>;
@@ -30,7 +32,19 @@ export default function TransactionDetailsStep({ form }: TransactionDetailsStepP
         name="to"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Recipient address (To)</FormLabel>
+            <FormLabel className="flex items-center gap-1">
+              Recipient address (To)
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <span className="cursor-default">
+                  <HelpCircle className="ml-1 w-4 h-4 text-muted-foreground" />
+                  </span>
+                </TooltipTrigger>
+                <TooltipContent className="pointer-events-none max-w-xs break-words p-2 rounded-md bg-black text-white dark:bg-white dark:text-black">
+                  <p>This is the address you're interacting with (Safe, token contract etc...).</p>
+                </TooltipContent>
+              </Tooltip>
+            </FormLabel>
             <FormControl>
               <Input placeholder="Enter recipient address" {...field} />
             </FormControl>
@@ -43,7 +57,19 @@ export default function TransactionDetailsStep({ form }: TransactionDetailsStepP
         name="value"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Value (in wei)</FormLabel>
+            <FormLabel className="flex items-center gap-1">
+              Value (in wei)
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <span className="cursor-default">
+                    <HelpCircle className="ml-1 w-4 h-4 text-muted-foreground" />
+                  </span>
+                </TooltipTrigger>
+                <TooltipContent className="pointer-events-none max-w-xs break-words p-2 rounded-md bg-black text-white dark:bg-white dark:text-black">
+                  <p>This is the native currency value you're attaching to the call (ETH, BNB etc...).</p>
+                </TooltipContent>
+              </Tooltip>
+            </FormLabel>
             <FormControl>
               <Input placeholder="Enter value in wei" {...field} />
             </FormControl>
@@ -56,7 +82,19 @@ export default function TransactionDetailsStep({ form }: TransactionDetailsStepP
         name="data"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Transaction data</FormLabel>
+            <FormLabel className="flex items-center gap-1">
+              Transaction data
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <span className="cursor-default">
+                    <HelpCircle className="ml-1 w-4 h-4 text-muted-foreground" />
+                  </span>
+                </TooltipTrigger>
+                <TooltipContent className="pointer-events-none max-w-xs break-words p-2 rounded-md bg-black text-white dark:bg-white dark:text-black">
+                  <p>This is the raw data of the call. In Safe's UI it is the Raw data field.</p>
+                </TooltipContent>
+              </Tooltip>
+            </FormLabel>
             <FormControl>
               <Input placeholder="Enter transaction data" {...field} />
             </FormControl>
@@ -69,7 +107,19 @@ export default function TransactionDetailsStep({ form }: TransactionDetailsStepP
         name="operation"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Operation</FormLabel>
+            <FormLabel className="flex items-center gap-1">
+              Operation
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <span className="cursor-default">
+                    <HelpCircle className="ml-1 w-4 h-4 text-muted-foreground" />
+                  </span>
+                </TooltipTrigger>
+                <TooltipContent className="pointer-events-none max-w-xs break-words p-2 rounded-md bg-black text-white dark:bg-white dark:text-black">
+                  <p>WARNING: rarely this field is a delegatecall. If so, make sure you understand what the transaction is doing.</p>
+                </TooltipContent>
+              </Tooltip>
+            </FormLabel>
             <Select
               onValueChange={field.onChange}
               value={field.value}
