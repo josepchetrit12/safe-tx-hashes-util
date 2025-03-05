@@ -28,6 +28,13 @@ export const NETWORKS = [
       logo: "networks/base.ico",
     },
     {
+      value: "worldchain",
+      label: "Worldchain",
+      chainId: 10252,
+      gnosisPrefix: "wc",
+      logo: "networks/worldchain.ico",
+    },
+    {
       value: "mantle",
       label: "Mantle",
       chainId: 5000,
@@ -98,6 +105,13 @@ export const NETWORKS = [
       logo: "networks/scroll.ico",
     },
     {
+      value: "xlayer",
+      label: "xLayer",
+      chainId: 204,
+      gnosisPrefix: "xlayer",
+      logo: "networks/xlayer.ico",
+    },
+    {
       value: "aurora",
       label: "Aurora",
       chainId: 1313161554,
@@ -112,27 +126,6 @@ export const NETWORKS = [
       logo: "networks/blast.ico",
     },
     {
-      value: "gnosis-chiado",
-      label: "Gnosis Chiado",
-      chainId: 10200,
-      gnosisPrefix: "chiado",
-      logo: "networks/gnosis.ico",
-    },
-    {
-      value: "worldchain",
-      label: "Worldchain",
-      chainId: 10252,
-      gnosisPrefix: "wc",
-      logo: "networks/worldchain.ico",
-    },
-    {
-      value: "xlayer",
-      label: "xLayer",
-      chainId: 204,
-      gnosisPrefix: "xlayer",
-      logo: "networks/xlayer.ico",
-    },
-    {
       value: "sepolia",
       label: "Sepolia",
       chainId: 11155111,
@@ -145,5 +138,12 @@ export const NETWORKS = [
       chainId: 84532,
       gnosisPrefix: "basesep",
       logo: "networks/base.ico",
+    },
+    {
+      value: "gnosis-chiado",
+      label: "Gnosis Chiado",
+      chainId: 10200,
+      gnosisPrefix: "chiado",
+      logo: "networks/gnosis.ico",
     }
   ];
