@@ -102,6 +102,7 @@ export default function BasicInfoStep({ form }: BasicInfoStepProps) {
               <Input
                 type="number"
                 placeholder="Enter Chain ID"
+                readOnly
                 {...field}
                 onChange={(e) => {
                   const value = parseInt(e.target.value);

@@ -99,6 +99,7 @@ export default function ApiInputFields({ form }: ApiInputFieldsProps) {
               <Input
                 type="number"
                 placeholder="Enter Chain ID"
+                readOnly
                 {...field}
                 onChange={(e) => {
                   const value = parseInt(e.target.value);
