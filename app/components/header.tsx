@@ -49,7 +49,8 @@ export function Header() {
             </nav>
             
             {/* Mobile Navigation Button */}
-            <div className="flex md:hidden">
+            <div className="flex md:hidden items-center">
+              <ModeToggle />
               <button
                 type="button"
                 className="inline-flex items-center justify-center p-2 rounded-md text-foreground"
@@ -90,9 +91,6 @@ export function Header() {
               <Github className="h-5 w-5" />
               <span>GitHub</span>
             </a>
-            <div className="px-3 py-2">
-              <ModeToggle />
-            </div>
           </div>
         </div>
       )}
