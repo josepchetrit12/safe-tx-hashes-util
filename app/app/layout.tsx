@@ -40,7 +40,7 @@ export default function RootLayout({
             <div className="min-h-screen flex flex-col bg-gradient-main dark:bg-gradient-main-dark">
               <div className="flex flex-col flex-grow">
                 <Navbar />
-                <main className="flex-grow flex flex-col items-center justify-start py-10 mt-10">
+                <main className="flex-grow flex flex-col items-center justify-start pt-5 mt-5">
                   {children}
                 </main>
               </div>
