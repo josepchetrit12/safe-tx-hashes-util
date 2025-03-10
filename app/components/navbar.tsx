@@ -344,8 +344,8 @@ const Navbar: React.FC = () => {
                           key === 'services' ? 'left-[-337px] min-w-0 max-w-[790px] w-[calc(100vw-55px)]' :
                             'transform -translate-x-1/2 left-1/2 min-w-[500px]'
                           } bg-white dark:bg-[#0D0D0D] border border-[#e8e8e8] dark:border-[#292929] shadow-[0px_10px_20px_rgba(0,0,0,0.05)] rounded-[16px] p-8 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-hover:mt-[15px]`}>
-                          <div className={`before:content-[''] before:block before:w-6 before:h-[15px] before:absolute before:top-0 ${key === 'products' ? 'before:left-[255px]' :
-                            key === 'services' ? 'before:left-[368px]' :
+                          <div className={`before:content-[''] before:block before:w-6 before:h-[15px] before:absolute before:top-0 ${key === 'products' ? 'before:left-[245px]' :
+                            key === 'services' ? 'before:left-[354px]' :
                               'before:left-1/2 before:-translate-x-1/2'
                             } before:-translate-y-full before:bg-[url('https://7795250.fs1.hubspotusercontent-na1.net/hubfs/7795250/triangle-corner2.svg')] dark:before:bg-[url('https://7795250.fs1.hubspotusercontent-na1.net/hubfs/7795250/triangle-corner-darkest.svg')] before:bg-cover before:bg-no-repeat`}>
                             <div className="flex justify-between gap-[30px] flex-wrap">
