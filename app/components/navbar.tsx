@@ -340,14 +340,18 @@ const Navbar: React.FC = () => {
                         <a href="#" className="text-[15px] font-medium leading-[126%] tracking-[-0.01em] text-[#0a0f39] dark:text-[#fafafa] hover:text-[#4e5ee4] dark:hover:text-[#d1d1d1] transition-colors duration-300">
                           {menu.name}
                         </a>
-                        <div className={`invisible opacity-0 absolute top-[25px] ${key === 'products' ? 'left-[-224px] min-w-0 max-w-[1200px] w-[calc(100vw-55px)]' :
+                        
+                        <div className={`invisible opacity-0 absolute top-[40px] ${key === 'products' ? 'left-[-224px] min-w-0 max-w-[1200px] w-[calc(100vw-55px)]' :
                           key === 'services' ? 'left-[-337px] min-w-0 max-w-[790px] w-[calc(100vw-55px)]' :
                             'transform -translate-x-1/2 left-1/2 min-w-[500px]'
-                          } bg-white dark:bg-[#0D0D0D] border border-[#e8e8e8] dark:border-[#292929] shadow-[0px_10px_20px_rgba(0,0,0,0.05)] rounded-[16px] p-8 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-hover:mt-[15px]`}>
+                          } bg-white dark:bg-[#0D0D0D] border border-[#e8e8e8] dark:border-[#292929] shadow-[0px_10px_20px_rgba(0,0,0,0.05)] rounded-[16px] p-8 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-hover:mt-0`}>
                           <div className={`before:content-[''] before:block before:w-6 before:h-[15px] before:absolute before:top-0 ${key === 'products' ? 'before:left-[245px]' :
                             key === 'services' ? 'before:left-[354px]' :
                               'before:left-1/2 before:-translate-x-1/2'
                             } before:-translate-y-full before:bg-[url('https://7795250.fs1.hubspotusercontent-na1.net/hubfs/7795250/triangle-corner2.svg')] dark:before:bg-[url('https://7795250.fs1.hubspotusercontent-na1.net/hubfs/7795250/triangle-corner-darkest.svg')] before:bg-cover before:bg-no-repeat`}>
+                             {/* Add a hidden pseudo-element to create a hover bridge */}
+                            <div className="absolute -top-5 left-0 w-full h-5 bg-transparent opacity-0 group-hover:opacity-100"></div>
+                            {/* <div className="absolute h-[15px] w-full top-[100%] left-0 bg-transparent"></div> */}
                             <div className="flex justify-between gap-[30px] flex-wrap">
                               {menu.sections.map((section, idx) => (
                                 <div key={idx} className="flex flex-col gap-1 flex-1">
